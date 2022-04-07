@@ -1,0 +1,27 @@
+Editar imagenes como administrador ignorar
+
+Messages opcional, se puede implementar si uno quisiese y puede
+
+Profile
+
+Pages
+Get pages
+Get page
+
+Login required
+Create page
+Update page
+Delete page
+
+Profile
+
+Login required
+Get profile
+Update profile
+
+'/about' Con informacion sobre el creador del blog y el proyecto en si
+
+App pages/
+App accounts/
+App messages/ 
+App admin/ incluida en django
