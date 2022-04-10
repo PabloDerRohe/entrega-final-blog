@@ -6,7 +6,7 @@
 
 <div class="container px-5">
     <div class="row gx-5 justify-content-center">
-        <div class="col-lg-6">
+        <div class="col-lg-15">
             <div class="text-center my-10">
                 <h1 class="display-5 fw-bolder text-white mb-2">{{post.titulo}}</h1>
                 <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
@@ -26,11 +26,11 @@
     <div>
         <br>
         <p>Autor: {{ post.autor.first_name }} {{ post.autor.last_name }}</p>
-        <h2>{{ post.subtitulo }}</h2>
+        <h4>{{ post.subtitulo }}</h4>
         <p><img src="{{post.imagen.url}}" height='300'></p>
         <p>{{ post.contenido | safe }}</p>
         <br>
-        <p>Fecha de creacion: {{ post.fecha }}</p>
+        <p>Fecha de creacion: {{ post.fecha | date:'d-m-Y H:m' }}</p>
         <br>
     </div>
     <br>

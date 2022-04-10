@@ -23,6 +23,6 @@ class NuestraEdicionUser(forms.Form):
     first_name = forms.CharField(label="Nombre", max_length=20, required=False)
     last_name = forms.CharField(label="Apellido", max_length=20, required=False)
     avatar = forms.ImageField(required=False)
-    link = forms.URLField(required=False)
-    more_description = forms.CharField(max_length=100, required=False)
+    link = forms.URLField(label="Link", required=False)
+    more_description = forms.CharField(label="Descripcion", max_length=100, required=False)
     

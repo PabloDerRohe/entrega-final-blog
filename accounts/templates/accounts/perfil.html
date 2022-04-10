@@ -1,0 +1,42 @@
+{% extends 'index/index.html' %}
+
+
+{% block headerIndex %}
+
+<h1 class="display-5 fw-bolder text-white mb-2">Editar perfil</h1>
+
+{% endblock headerIndex %}
+
+{% block bodyIndex %}
+
+    <p>
+        {% if msj %}
+            {{msj}}
+        {% endif %}
+    </p>
+
+    
+    <p>
+        Nombre:   {{ request.user.first_name }}
+    </p>
+    <p>
+        Apellido: {{ request.user.last_name }}
+    </p>    
+
+        email: {{ request.user.email }}
+    </p>
+    {% if request.user.userextension.avatar.url != Null %}
+        <img src="{{request.user.userextension.avatar.url}}" height='200'>
+    {% endif %}
+    </p>
+        Link: {{ request.user.userextension.link }}
+    </p>
+        Descripcion: {{ request.user.userextension.more_description }}
+    </p>
+    <br>
+    <a class="btn btn-primary btn-lg px-4 me-sm-3" href={% url 'editar_user' %}>Editar perfil</a>
+    <br>
+    <br>
+   
+
+{% endblock bodyIndex %}

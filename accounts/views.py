@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import NuestraCreacionUser, NuestraEdicionUser
 from .models import UserExtension
+
+
 # from .models import UserExtension
 
 ################# CRUD Usuarios
@@ -49,6 +51,14 @@ def registrar(request):
     return render(request, 'accounts/registrar.html', {'form': form, 'msj': ''})
 
 @login_required
+def perfil(request):
+    
+    
+    
+    return render(request, 'accounts/perfil.html', {})
+
+
+@login_required
 def editar_user(request):
     
     user_extension_logued, _ = UserExtension.objects.get_or_create(user=request.user)
@@ -83,13 +93,11 @@ def editar_user(request):
             'first_name': request.user.first_name,
             'last_name': request.user.last_name,
             'avatar': user_extension_logued.avatar,
-            'link': user_extension_logued.avatar,
+            'link': user_extension_logued.link,
             'more_description': user_extension_logued.more_description,
         }
     )
     return render(request, 'accounts/editar_user.html', {'form': form, 'msj': ''})
 
 
-def buscar_url_avatar(user):
-    return UserExtension.objects.filter(user=user)[0].avatar.url
 

@@ -39,7 +39,7 @@
 
     {% for post in post_buscados %}
         <li>
-            {{post.titulo}} <a href={% url 'listado_posts' %}>Ver posts</a></p>
+            {{post.titulo}} <a href={% url 'leer_post' post.id %}>Ver mas</a></p>
         </li>
         <br>
 

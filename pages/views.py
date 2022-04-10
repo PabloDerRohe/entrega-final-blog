@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from .models import Post
 from .forms import PostForm, BuscarPost
 
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 def listado_posts(request):
@@ -27,11 +29,11 @@ def leer_post(request, id):
     return render(request, 'pages/leer_post.html', datos)
 
 
-
+@login_required
 def crear_post(request):
     
     if request.method == 'POST':
-        formulario = PostForm(request.POST)
+        formulario = PostForm(request.POST, request.FILES)
 
         if formulario.is_valid():
             data = formulario.cleaned_data
@@ -40,7 +42,7 @@ def crear_post(request):
                 titulo=data['titulo'],
                 subtitulo=data['subtitulo'],
                 contenido=data['contenido'],
-                autor=data['autor'],
+                autor=data['autor'], 
                 imagen=data['imagen'],
                 )
             
@@ -67,7 +69,7 @@ def buscar_post(request):
         {'buscador': buscador, 'post_buscados': post_buscados, 'dato': dato})
 
 
-
+@login_required
 def editar_post(request, id):
     
     post = Post.objects.get(id=id)    
@@ -94,7 +96,7 @@ def editar_post(request, id):
             'subtitulo': post.subtitulo,
             'contenido': post.contenido,
             'autor': post.autor,
-            'imagen': post.imagen.url,
+            'imagen': post.imagen,
         }
     )
     return render(
@@ -102,7 +104,7 @@ def editar_post(request, id):
         {'formulario': formulario, 'post': post})
 
 
-
+@login_required
 def borrar_post(request, id):
     
     post = Post.objects.get(id=id)    
