@@ -1,0 +1,55 @@
+{% extends 'index/index.html' %}
+
+
+{% block headerIndex %}
+
+<div class="container px-5">
+    <div class="row gx-5 justify-content-center">
+        <div class="col-lg-6">
+            <div class="text-center my-5">
+                <h1 class="display-5 fw-bolder text-white mb-2">Buscar post</h1>
+                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock headerIndex %}
+
+
+
+{% block bodyIndex %}
+<br>
+<form action="{% url 'buscar_post' %}" method="get">
+    {% csrf_token %}
+    
+    <table>
+        {{buscador.as_table}}
+    </table>
+
+    <input type="submit" placeholder="Enviar">
+</form>
+<br>
+
+{% if dato %}
+    <br>
+    Se busco por el dato {{dato}}
+    <br>
+
+    {% for post in post_buscados %}
+        <li>
+            {{post.titulo}} <a href={% url 'listado_posts' %}>Ver posts</a></p>
+        </li>
+        <br>
+
+    {% endfor %}
+{% else %}
+    No se busco nada...
+    <br>
+    <br>
+
+{% endif %}
+    
+
+{% endblock bodyIndex %}

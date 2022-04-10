@@ -1,10 +1,28 @@
-Editar imagenes como administrador ignorar
+
+
+
+
+Estructura de la entrega
+
 
 Messages opcional, se puede implementar si uno quisiese y puede
 
+Blog
+
+Debe contar con usuarios y permisos
 Profile
 
+'/about' Con informacion sobre el creador del blog y el proyecto en si
+
+
 Pages
+Acceso visible en el index.
+Listado de pages
+Detalle de cada page/post
+Mensaje "no hay paginas aun" si no existe ninguna pagina
+
+Editar imagenes como administrador ignorar
+
 Get pages
 Get page
 
@@ -19,7 +37,6 @@ Login required
 Get profile
 Update profile
 
-'/about' Con informacion sobre el creador del blog y el proyecto en si
 
 App pages/
 App accounts/

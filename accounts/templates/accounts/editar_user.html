@@ -1,0 +1,26 @@
+{% extends 'index/index.html' %}
+
+
+{% block headerIndex %}
+
+<h1 class="display-5 fw-bolder text-white mb-2">Editar perfil</h1>
+
+{% endblock headerIndex %}
+
+{% block bodyIndex %}
+
+    {% if msj %}
+        {{msj}}
+    {% endif %}
+
+    <form action={% url 'editar_user' %} method="post" enctype='multipart/form-data'>
+        {% csrf_token %}
+
+        <table>
+            {{form.as_table}}
+        </table>
+
+        <button>Guardar</button>
+    </form>
+
+{% endblock bodyIndex %}

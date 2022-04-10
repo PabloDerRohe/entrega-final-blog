@@ -1,0 +1,45 @@
+{% extends 'index/index.html' %}
+
+{% load static %}
+
+{% block headerIndex %}
+
+<div class="container px-5">
+    <div class="row gx-5 justify-content-center">
+        <div class="col-lg-6">
+            <div class="text-center my-10">
+                <h1 class="display-5 fw-bolder text-white mb-2">Sobre el blog y el autor</h1>
+                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock headerIndex %}
+
+
+
+{% block bodyIndex %}
+
+<div class='container'>
+    <div>
+        <br>
+        <h2>Blog de finanzas</h2>
+        <p>
+            Blog dedicado a la finanzas y la independencia financiera. Debate y colaboracion
+            por distintos usuarios.
+        </p>
+        Por Pablo Marelli
+        <img src="{{post.imagen.url}}" height='300'></li>
+        
+        <br>
+    </div>
+    <br>
+    <br>
+    <a class="btn btn-primary btn-lg px-4 me-sm-3" href={% url 'index' %}>Volver a inicio</a>
+    <br>
+    <br>
+</div>
+
+{% endblock bodyIndex %}

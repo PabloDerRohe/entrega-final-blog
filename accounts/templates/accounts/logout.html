@@ -1,0 +1,16 @@
+{% extends 'index/index.html' %}
+
+
+{% block headerIndex %}
+
+<h1 class="display-5 fw-bolder text-white mb-2">Te deslogeaste correctamente</h1>
+
+{% endblock headerIndex %} 
+
+{% block bodyIndex %}
+
+    {% if msj %}
+        {{msj}}
+    {% endif %}
+
+{% endblock bodyIndex %}
