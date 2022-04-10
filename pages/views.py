@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+
 def listado_posts(request):
     
     posts = Post.objects.all()
@@ -17,7 +18,6 @@ def listado_posts(request):
     return render(request, 'pages/listado_posts.html', datos)
 
 
-
 def leer_post(request, id):
     
     post = Post.objects.get(id=id)
@@ -27,6 +27,21 @@ def leer_post(request, id):
     }
     
     return render(request, 'pages/leer_post.html', datos)
+
+
+def buscar_post(request):
+    
+    post_buscados = []
+    dato = request.GET.get('buscar_post', None)
+            
+    if dato is not None:
+        post_buscados = Post.objects.filter(titulo=dato)
+    
+    buscador = BuscarPost()
+        
+    return render(
+        request, "pages/buscar_post.html",
+        {'buscador': buscador, 'post_buscados': post_buscados, 'dato': dato})
 
 
 @login_required
@@ -52,21 +67,6 @@ def crear_post(request):
     formulario = PostForm()
     return render(request, 'pages/crear_post.html', {'formulario': formulario})
 
-
-
-def buscar_post(request):
-    
-    post_buscados = []
-    dato = request.GET.get('buscar_post', None)
-            
-    if dato is not None:
-        post_buscados = Post.objects.filter(titulo=dato)
-    
-    buscador = BuscarPost()
-        
-    return render(
-        request, "pages/buscar_post.html",
-        {'buscador': buscador, 'post_buscados': post_buscados, 'dato': dato})
 
 
 @login_required
