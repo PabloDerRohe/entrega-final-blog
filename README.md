@@ -89,6 +89,4 @@ Por ultimo podemos buscar un titulo completo usando el buscador con el mismo pro
 
 Cuando ingresamos a la seccion usuarios nos aparece la lista de los mismos y podemos crear uno nuevo, buscar por alguno en particular o varios bajo el mismo nombre, editar alguno o borrar. 
 
-### Asesores
-
-En igual comportamiento que la seccion usuarios, los asesores nos aparecen listados y nos da las mismas opciones que en usuarios, con la diferencia de un campo mas, que es el de especialidad.
+## En construccion
