@@ -25,11 +25,15 @@
 <div class='container'>
     <div>
         <br>
+        <hr>
         <p>Autor: {{ post.autor.first_name }} {{ post.autor.last_name }}</p>
-        <h4>{{ post.subtitulo }}</h4>
+        <h3>{{ post.subtitulo }}</h3>
+        <hr>
         <p><img src="{{post.imagen.url}}" height='300'></p>
+        <hr>
         <p>{{ post.contenido | safe }}</p>
         <br>
+        <hr>
         <p>Fecha de creacion: {{ post.fecha | date:'d-m-Y H:m' }}</p>
         <br>
     </div>

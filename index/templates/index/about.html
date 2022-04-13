@@ -22,29 +22,28 @@
 
 {% block bodyIndex %}
 
-<div class='container'>
-    <div>
-        <br>
-        <h2>Blog de finanzas</h2>
-        <br>
+<div class='container p-3'>
+    <div class="row align-items-center">
+        <div class="col">
+            <br>
+            <h2>Blog de finanzas</h2>
+            <br>
 
-        <p>
-            Blog dedicado a la finanzas y la independencia financiera. Debate y colaboracion
-            por distintos usuarios.
-        </p>
-        <p>
-            Soy un arquitecto de la UNLP que decidio darle una oportunidad al mundo de la programacion
-            y el desarrollo web. Entusiasta de las finanzas, las inversiones, la independencia financiera.
-            Gracias Cristian, Maxi y Coder por todo.
-        </p>
-        Por Pablo Marelli
-        <br>
-        <br>
-        <p>
-            <img src={% static '/images/4x4 byn.jpg' %} height='250'>
-        </p>
-        
-        <br>
+            <p>
+                Blog dedicado a la finanzas y la independencia financiera. Debate y colaboracion
+                por distintos usuarios.
+            </p>
+            <p>
+                Soy un arquitecto de la UNLP que decidio darle una oportunidad al mundo de la programacion
+                y el desarrollo web. Entusiasta de las finanzas, las inversiones, la independencia financiera.
+                Gracias Cristian, Maxi y Coder por todo.
+            </p>
+            Por Pablo Marelli
+            <br>
+        </div>
+        <div class="col">
+            <img src={% static '/images/4x4 byn.jpg' %} height='250' class="rounded-3">
+        </div>
     </div>
     <br>
     <br>
@@ -52,5 +51,4 @@
     <br>
     <br>
 </div>
-
 {% endblock bodyIndex %}

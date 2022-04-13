@@ -12,14 +12,18 @@
     {% if msj %}
         {{msj}}
     {% endif %}
+    
+    <div class="form-control">
+        <form  action="" method="POST">
+            {% csrf_token %}
+            
+            <table>
+                {{form.as_table}}
+            </table>
+            
+            <button class="btn btn-primary">Loguearse</button>
+        </form>
+    </div>
 
-    <form action="" method="post">
-        {% csrf_token %}
-        
-        <table>
-            {{form.as_table}}
-        </table>
-        
-        <button>Loguearse</button>
-    </form>
+
 {% endblock bodyIndex %}

@@ -9,34 +9,40 @@
 
 {% block bodyIndex %}
 
-    <p>
-        {% if msj %}
-            {{msj}}
-        {% endif %}
-    </p>
-
-    
-    <p>
-        Nombre:   {{ request.user.first_name }}
-    </p>
-    <p>
-        Apellido: {{ request.user.last_name }}
-    </p>    
-
-        email: {{ request.user.email }}
-    </p>
-    {% if request.user.userextension.avatar.url != Null %}
-        <img src="{{request.user.userextension.avatar.url}}" height='200'>
-    {% endif %}
-    </p>
-        Link: {{ request.user.userextension.link }}
-    </p>
-        Descripcion: {{ request.user.userextension.more_description }}
-    </p>
-    <br>
-    <a class="btn btn-primary btn-lg px-4 me-sm-3" href={% url 'editar_user' %}>Editar perfil</a>
-    <br>
-    <br>
+<div class="container p-5">
+    <div class="row ">
+        <p>
+            {% if msj %}
+                {{msj}}
+            {% endif %}
+        </p>
+    </div>
+    <div class="row shadow p-3 mb-5 bg-body rounded">
+        <div class="col ">
+            <p>
+                <strong>Nombre:</strong>   {{ request.user.first_name }}
+            </p>
+            <p>
+                <strong>Apellido:</strong> {{ request.user.last_name }}
+            </p>    
+            <p>
+                <strong>email:</strong> {{ request.user.email }}
+            </p>
+            <p>
+                <strong>Link:</strong> {{ request.user.userextension.link }}
+            </p>
+            <p>
+                <strong>Descripcion:</strong> {{ request.user.userextension.more_description }}
+            </p>
+            <a class="btn btn-primary btn-lg px-4 me-sm-3" href={% url 'editar_user' %}>Editar perfil</a>
+        </div>
+        <div class="col me-auto">
+            {% if request.user.userextension.avatar.url != Null %}
+                <img src="{{request.user.userextension.avatar.url}}" height='200' class="rounded-3">
+            {% endif %}
+        </div>
+    </div>
+</div>
    
 
 {% endblock bodyIndex %}

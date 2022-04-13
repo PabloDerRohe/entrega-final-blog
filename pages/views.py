@@ -1,32 +1,25 @@
 from django.shortcuts import render, redirect
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+
 from .models import Post
 from .forms import PostForm, BuscarPost
 
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
 
-def listado_posts(request):
-    
-    posts = Post.objects.all()
-    
-    datos = {
-        'posts': posts
-    }
-    
-    return render(request, 'pages/listado_posts.html', datos)
+class listado_posts(ListView):
+    model = Post
+    template_name = 'pages/listado_posts.html'
 
 
-def leer_post(request, id):
+class leer_post(DetailView):
     
-    post = Post.objects.get(id=id)
-    
-    datos = {
-        'post': post
-    }
-    
-    return render(request, 'pages/leer_post.html', datos)
+    model = Post
+    template_name = 'pages/leer_post.html'
+
 
 
 def buscar_post(request):
@@ -44,71 +37,32 @@ def buscar_post(request):
         {'buscador': buscador, 'post_buscados': post_buscados, 'dato': dato})
 
 
-@login_required
-def crear_post(request):
+class crear_post(LoginRequiredMixin, CreateView):
     
-    if request.method == 'POST':
-        formulario = PostForm(request.POST, request.FILES)
-
-        if formulario.is_valid():
-            data = formulario.cleaned_data
-            
-            nuevo_post = Post(
-                titulo=data['titulo'],
-                subtitulo=data['subtitulo'],
-                contenido=data['contenido'],
-                autor=data['autor'], 
-                imagen=data['imagen'],
-                )
-            
-            nuevo_post.save()
-            return redirect('listado_posts')
-            
-    formulario = PostForm()
-    return render(request, 'pages/crear_post.html', {'formulario': formulario})
-
-
-
-@login_required
-def editar_post(request, id):
+    model = Post     
+    template_name= 'pages/crear_post.html'
+    # form = PostForm()
+    fields = [
+        'titulo',
+        'subtitulo',
+        'contenido',
+        'autor',
+        'imagen',
+        ]
     
-    post = Post.objects.get(id=id)    
-    
-    if request.method == 'POST':
-        formulario = PostForm(request.POST, request.FILES)
 
-        if formulario.is_valid():
-            
-            data = formulario.cleaned_data #Limpia informacion
-            
-            post.titulo = data['titulo']
-            post.subtitulo = data['subtitulo']
-            post.contenido = data['contenido']
-            post.autor = data['autor']
-            post.imagen = data['imagen']
-            post.save()
-            
-            return redirect('listado_posts')
-            
-    formulario = PostForm(
-        initial={
-            'titulo': post.titulo,
-            'subtitulo': post.subtitulo,
-            'contenido': post.contenido,
-            'autor': post.autor,
-            'imagen': post.imagen,
-        }
-    )
-    return render(
-        request, 'pages/editar_post.html',
-        {'formulario': formulario, 'post': post})
+class editar_post(LoginRequiredMixin, UpdateView):
+    model = Post
+    template_name = 'pages/editar_post.html'
+    fields = [
+        'titulo',
+        'subtitulo',
+        'contenido',
+        'imagen',
+    ] 
 
 
-@login_required
-def borrar_post(request, id):
-    
-    post = Post.objects.get(id=id)    
-    post.delete()
-    
-    return redirect('listado_posts')
-    
+class borrar_post(LoginRequiredMixin, DeleteView):
+    model = Post     
+    template_name= 'pages/borrar_post.html'
+    success_url = reverse_lazy('listado_posts')

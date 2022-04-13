@@ -13,6 +13,11 @@ class NuestraCreacionUser(UserCreationForm):
         model = User
         fields = ['username', 'email', 'password1', 'password2']
         help_texts = { k: '' for k in fields }
+        
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'form-control'}),
+            'password': forms.TextInput(attrs={'class': 'form-control'}),
+        }
 
 
 class NuestraEdicionUser(forms.Form):

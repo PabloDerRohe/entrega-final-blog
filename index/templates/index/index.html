@@ -27,6 +27,7 @@
                         
                         {% if request.user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'calculadora' %}">Calculadora</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'directs' request.user %}">Mensajes</a></li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'perfil' %}">
                             {% if request.user.userextension.avatar.url != Null %}
@@ -93,17 +94,17 @@
                             <div>
                                 <table cell-spacing='30'>
                                     <thead><a class="btn btn-primary btn-lg px-4 me-sm-3" href="{% url 'listado_posts' %}">Ver todas las publicaciones</a></thead>
-
-                                    {% for post in posts %}
-                                            <td>
-                                                <br>
-                                                <h4>{{ post.titulo }}</h4>
-                                                <p>Autor: {{ post.autor.first_name }} {{ post.autor.last_name }}</p>
-                                                <p><img src="{{post.imagen.url}}" height='250'></p>
-
-                                                <br>
-                                            </td>
-                                    {% endfor %}
+                                            <div class="container p-5">
+                                                <div class="row ">
+                                                    {% for post in posts %}
+                                                    <div class="col-6">
+                                                        <h4>{{ post.titulo }}</h4>
+                                                        <p>Autor: {{ post.autor.first_name }} {{ post.autor.last_name }}</p>
+                                                        <p><img src="{{post.imagen.url}}" height='250'></p>
+                                                    </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
                                 </table>
                             </div>
                             {% else %}

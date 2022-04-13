@@ -20,12 +20,12 @@
 
 {% block bodyIndex %}
 
-<form action="{% url 'editar_post' post.id %}" method="post" enctype="multipart/form-data">
+<form action="{% url 'editar_post' post.pk %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
 
     <table>
-        {{ formulario.media }}
-        {{ formulario.as_table }}
+        {{ form.media }}
+        {{ form.as_table }}
     </table>
 
 <input type="submit" placeholder="Guardar cambios">

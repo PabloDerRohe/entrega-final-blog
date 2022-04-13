@@ -14,9 +14,15 @@ def calculator(request):
         if form.is_valid():
             data = form.cleaned_data
             
-            calculo_con_interes = ((data['monto_inicial']*((1+(data['interes']/100))**data['año']))
-                                   + (data['ahorro_mensual']*12)*
-                                   (((((1+data['interes']/100)**data['año'])-1))/data['interes']))
+            i=0
+            monto = data['monto_inicial']
+            
+            while i < data['año']:
+                monto = (monto+(data['ahorro_mensual']*12))*(1+data['interes']*0.01)
+                i = i + 1
+                calculo_con_interes = {i: monto}
+                
+            
             calculo_sin_interes = data['monto_inicial']+((data['ahorro_mensual']*12)*data['año'])
             
             nuevo_post = CalculadoraInteres(

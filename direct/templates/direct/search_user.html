@@ -1,55 +1,82 @@
-{% extends 'base.html' %}
+{% extends 'index/index.html' %}
 
 {% load static %}
 
-{% block content %}
+{% block headerIndex %}
 
- <div class="columns is-mobile">
-  <div class="column is-offset-one-fifth">
-
-
-<div class="field has-addons">
-<form>
-  <div class="control">
-    <input class="input is-large" name="q" type="text" placeholder="Search users..." value="{{ request.GET.q }}">
-  </div>
-  <div class="control">
-  	<button type="submit" class="button is-success">Search</button>
-  </div>
-  </form>
-</div>
-
-
-</div>
-</div>
-
-<div class="column is-one-quarter">
-
-{% for user in users %}
-<div class="box">
-  <article class="media">
-    <div class="media-left">
-      <figure class="image is-64x64">
-          {% if user.profile.picture %}
-            <img src="{{ user.profile.picture.url }}" alt="Placeholder image">
-          {% else %}
-            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-          {% endif %}
-      </figure>
+<div class="container px-5">
+    <div class="row gx-5 justify-content-center">
+        <div class="col-lg-15">
+            <div class="text-center my-10">
+                <h1 class="display-5 fw-bolder text-white mb-2">Nueva conversacion</h1>
+                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="media-content">
-      <div class="content">
-        <p>
-          <strong>{{ user.profile.first_name }} {{ user.profile.last_name }}</strong><small>@{{ user.username }}</small>
-        </p>
-        <a href="{% url 'newconversation' user.username %}" class="button is-info">Send a message!</a>
+</div>
+
+{% endblock headerIndex %}
+
+
+
+{% block bodyIndex %}
+
+  {% comment %} <div class="col col-w-25">
+    <div class="column is-offset-one-fifth">
+      <div class="field has-addons">
+      <form>
+        <div class="control">
+          <input class="input is-large" name="q" type="text" placeholder="Search users..." value="{{ request.GET.q }}">
+        </div>
+        <div class="control">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+        </form>
       </div>
     </div>
-  </article>
-</div>
-{% endfor %}
-	
+  </div> {% endcomment %}
 
-</div>
+  <form class="row g-3">
+    <div class="col-auto">
+      <input type="text" class="form-control" name="q" placeholder="Ingrese nombre..." value="{{ request.GET.q }}">
+    </div>
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary mb-3">Buscar</button>
+    </div>
+  </form>
 
-{% endblock %}
+
+  <div class="column is-one-quarter">
+
+  {% for user in users %}
+  <div class="box">
+    <article class="media">
+      <div class="media-left">
+        <figure class="image is-64x64" height="50">
+            {% if user.userextension.avatar %}
+              <img src="{{ user.userextension.avatar.url }}" alt="Placeholder image" height='96'>
+            {% else %}
+              <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image" >
+            {% endif %}
+        </figure>
+      </div>
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <strong>{{ user.first_name }} {{ user.last_name }}</strong><small>@{{ user.username }}</small>
+          </p>
+          <a href="{% url 'newconversation' user.username %}" class="button is-info">Send a message!</a>
+        </div>
+      </div>
+    </article>
+  </div>
+  {% endfor %}
+    
+
+  </div>
+
+
+
+
+{% endblock bodyIndex %}
