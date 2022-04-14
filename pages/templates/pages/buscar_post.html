@@ -20,36 +20,23 @@
 
 
 {% block bodyIndex %}
-<br>
-<form action="{% url 'buscar_post' %}" method="get">
-    {% csrf_token %}
+<div class="container p-5">
+
+    <form action="" method="get">
+        <div class="mb-3">
+            <label for="searchbar" class="form-label">Ingrese nombre del titulo:</label>
+            <input class="form-control" type="text" name="q" value="{{ request.GET.q }}">
+        </div>
+        <div class="mb-3">
+            <input class="btn btn-primary" type="submit" value="Buscar post">
+        </div>    
+    </form>
+    {% for post in object_list %}
     
-    <table>
-        {{buscador.as_table}}
-    </table>
-
-    <input type="submit" placeholder="Enviar">
-</form>
-<br>
-
-{% if dato %}
-    <br>
-    Se busco por el dato {{dato}}
-    <br>
-
-    {% for post in post_buscados %}
-        <li>
-            {{post.titulo}} <a href={% url 'leer_post' post.id %}>Ver mas</a></p>
-        </li>
-        <br>
-
+        Publicacion: <strong>{{post.titulo}}</strong> <a href={% url 'leer_post' post.pk %}>Ver publicacion</a></p>
+    
     {% endfor %}
-{% else %}
-    No se busco nada...
-    <br>
-    <br>
-
-{% endif %}
+</div>
     
 
 {% endblock bodyIndex %}

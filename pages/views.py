@@ -7,7 +7,7 @@ from .forms import PostForm, BuscarPost
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-# Create your views here.
+
 
 
 class listado_posts(ListView):
@@ -21,22 +21,7 @@ class leer_post(DetailView):
     template_name = 'pages/leer_post.html'
 
 
-
-def buscar_post(request):
-    
-    post_buscados = []
-    dato = request.GET.get('buscar_post', None)
-            
-    if dato is not None:
-        post_buscados = Post.objects.filter(titulo=dato)
-    
-    buscador = BuscarPost()
-        
-    return render(
-        request, "pages/buscar_post.html",
-        {'buscador': buscador, 'post_buscados': post_buscados, 'dato': dato})
-
-
+   
 class crear_post(LoginRequiredMixin, CreateView):
     
     model = Post     
@@ -66,3 +51,17 @@ class borrar_post(LoginRequiredMixin, DeleteView):
     model = Post     
     template_name= 'pages/borrar_post.html'
     success_url = reverse_lazy('listado_posts')
+
+
+class buscar_post(ListView):
+    model = Post
+    template_name = "pages/buscar_post.html"
+    
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            object_list = self.model.objects.filter(titulo__icontains=query)
+        else:
+            object_list = self.model.objects.none()
+        return object_list
+   

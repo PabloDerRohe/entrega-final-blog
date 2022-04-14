@@ -10,5 +10,5 @@ urlpatterns = [
     path('crear-post/', views.crear_post.as_view(), name='crear_post'),
     path('editar-post/<int:pk>', views.editar_post.as_view(), name='editar_post'),
     path('borrar-post/<int:pk>', views.borrar_post.as_view(), name='borrar_post'),
-    path('buscar-post/', views.buscar_post, name='buscar_post'),
+    path('buscar-post/', views.buscar_post.as_view(), name='buscar_post'),
 ]

@@ -43,9 +43,9 @@
                 {% for post in object_list %}
                 <div class="col p-3">
                     <h3>{{ post.titulo }}</h3>
-                    <p>{{ post.autor.first_name }} {{ post.autor.last_name }}</p>
+                    <p>Autor: {{ post.autor.first_name }} {{ post.autor.last_name }}</p>
                     <p><img src="{{post.imagen.url}}" height='300'></p>
-                    <p>{{ post.fecha | date:'D d-m-Y, H:i T' }} GMT</p>
+                    <p>Fecha de creacion: {{ post.fecha | date:'D d-m-Y, H:i T' }} GMT</p>
                     <a class="btn btn-secondary btn-lg px-4 me-sm-3" href={% url 'leer_post' post.pk %}>Leer mas</a>
                     {% if request.user.is_authenticated %}
                     <a class="btn btn-secondary btn-lg px-4 me-sm-3" href={% url 'editar_post' post.pk %}>Editar</a>
