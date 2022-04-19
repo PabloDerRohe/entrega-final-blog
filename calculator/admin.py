@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from calculator.models import CalculadoraInteres
-
+from .models import Calculadora, CapitalTiempo
 # Register your models here.
 
-admin.site.register(CalculadoraInteres)
+admin.site.register(Calculadora)
+admin.site.register(CapitalTiempo)

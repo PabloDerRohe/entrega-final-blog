@@ -39,20 +39,25 @@
 
                 </div>
             </div>
-            <div class="row p-3">
+            <div class="row">
                 {% for post in object_list %}
-                <div class="col p-3">
-                    <h3>{{ post.titulo }}</h3>
-                    <p>Autor: {{ post.autor.first_name }} {{ post.autor.last_name }}</p>
-                    <p><img src="{{post.imagen.url}}" height='300'></p>
-                    <p>Fecha de creacion: {{ post.fecha | date:'D d-m-Y, H:i T' }} GMT</p>
-                    <a class="btn btn-secondary btn-lg px-4 me-sm-3" href={% url 'leer_post' post.pk %}>Leer mas</a>
-                    {% if request.user.is_authenticated %}
-                    <a class="btn btn-secondary btn-lg px-4 me-sm-3" href={% url 'editar_post' post.pk %}>Editar</a>
-                    <a class="btn btn-secondary btn-lg px-4 me-sm-3" href={% url 'borrar_post' post.pk %}>Borrar</a>
-                    {% endif %}
+                <div class="col-auto">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{post.imagen.url}}" height="" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">{{ post.titulo }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Autor: {{ post.autor.first_name }} {{ post.autor.last_name }}</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a class="btn btn-secondary" href="{% url 'leer_post' post.pk %}">Leer mas</a>
+                        <a class="btn btn-secondary" href="{% url 'editar_post' post.pk %}">Editar</a>
+                        <a class="btn btn-secondary" href="{% url 'borrar_post' post.pk %}">Borrar</a>
+                        </div>
+                    </div>
                 </div>
                 {% endfor %}
+            </div>
+
+
     {% else %}
 
     <h1>No hay ningun post publicado, ponete la 10 maestro!</h1>
