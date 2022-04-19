@@ -1,0 +1,42 @@
+{% extends 'index/index.html' %}
+
+
+{% block headerIndex %}
+
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-20">
+                <div class="text-center my-5">
+                    <h1 class="display-5 fw-bolder text-white mb-2">Grafico</h1>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock headerIndex %}
+
+
+{% block bodyIndex %}
+    <div class="container">
+        <div class="row">
+            <br><h1>Capital acumulado</h1><br>
+        </div>
+        <div class="row">
+            Monto acumulado: ${{ capital|floatformat:"2g" }}
+        </div>
+        <div class="row">
+            {% if chart %}
+                <img src="data:image/png;base64, {{ chart|safe }}" alt="">
+            {% endif %}
+        </div>
+        <div class="row">
+            <div class="col">
+                <a class="btn btn-primary" href="{% url 'list_calculator' %}">Volver</a>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock bodyIndex %}
