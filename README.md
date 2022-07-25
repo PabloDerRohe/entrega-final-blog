@@ -1,3 +1,5 @@
+### Project built for Coderhouse Pyhon and Django fullstack course
+
 ### Entrega 1 - Marelli
 
 # Blog de finanzas
