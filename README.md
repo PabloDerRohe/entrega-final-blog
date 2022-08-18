@@ -2,7 +2,6 @@
 
 ### Python | Django | HTML | CSS | Bootstrap
 
-### Entrega 1 - Marelli
 
 # Blog de finanzas
 
