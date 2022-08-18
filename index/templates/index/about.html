@@ -22,9 +22,9 @@
 
 {% block bodyIndex %}
 
-<div class='container p-3'>
-    <div class="row align-items-center">
-        <div class="col">
+<div class='container mt-4 mb-4'>
+    <div class="row justify-content-center">
+        <div class="col-6">
             <br>
             <h2>Blog de finanzas</h2>
             <br>
@@ -40,14 +40,10 @@
             Por Pablo Marelli
             <br>
         </div>
-        <div class="col">
+        <div class="col-2">
             <img src={% static '/images/4x4 byn.jpg' %} height='250' class="rounded-3">
+            <a class="btn btn-primary btn-lg mt-2 mb-2" href={% url 'index' %}>Volver a inicio</a>
         </div>
     </div>
-    <br>
-    <br>
-    <a class="btn btn-primary btn-lg px-4 me-sm-3" href={% url 'index' %}>Volver a inicio</a>
-    <br>
-    <br>
 </div>
 {% endblock bodyIndex %}

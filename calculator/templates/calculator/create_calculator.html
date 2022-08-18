@@ -1,5 +1,6 @@
 {% extends 'index/index.html' %}
 
+{% load crispy_forms_tags %}
 
 {% block headerIndex %}
 
@@ -20,14 +21,16 @@
 
 {% block bodyIndex %}
 
-    <div class='container'>
-        <form action="" method="POST">
-            {% csrf_token %}
-            <table>
-                {{ form.as_table }}
-            </table>
-            <input type="submit" value="Crear">
-        </form><br><br>
+    <div class='container mt-4 mb-4'>
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <input class="btn btn-primary mt-2 mb-2" type="submit" value="Crear">
+                </form>
+            </div>
+        </div>
     </div>
     
 {% endblock bodyIndex %}

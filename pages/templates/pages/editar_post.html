@@ -20,20 +20,21 @@
 
 {% block bodyIndex %}
 
-<form action="{% url 'editar_post' post.pk %}" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-
-    <table>
-        {{ form.media }}
-        {{ form.as_table }}
-    </table>
-
-<input type="submit" placeholder="Guardar cambios">
-</form>
-<br>
-<br>
-
-
-
+<div class="container mt-4 mb-4">
+    <div class="row justify-content-center">
+        <div class="col">
+            <form action="{% url 'editar_post' post.pk %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+            
+                <table>
+                    {{ form.media }}
+                    {{ form.as_table }}
+                </table>
+            
+            <input class="btn btn-primary" type="submit" placeholder="Guardar cambios">
+            </form>
+        </div>
+    </div>
+</div>
 
 {% endblock bodyIndex %}

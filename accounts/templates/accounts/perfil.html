@@ -1,6 +1,5 @@
 {% extends 'index/index.html' %}
 
-
 {% block headerIndex %}
 
 <h1 class="display-5 fw-bolder text-white mb-2">Editar perfil</h1>
@@ -17,8 +16,8 @@
             {% endif %}
         </p>
     </div>
-    <div class="row shadow p-3 mb-5 bg-body rounded">
-        <div class="col ">
+    <div class="form-group">
+        <div class="col-6">
             <p>
                 <strong>Nombre:</strong>   {{ request.user.first_name }}
             </p>

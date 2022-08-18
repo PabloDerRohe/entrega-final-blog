@@ -39,7 +39,7 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
                         {% else %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'registrar' %}">Registrase</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'registrar' %}">Registrarse</a></li>
                         {% endif %}
                     </ul>
                 </div>
@@ -54,24 +54,24 @@
                     <div class="col-lg-12">
                         <div class="text-center my-5">
                             {% block headerIndex %}
-                            {% if request.user.is_authenticated %}
-                            <h1 class="display-5 fw-bolder text-white mb-2">Bienvenido, {{request.user.first_name}}</h1>
-                            <p class="lead text-white-50 mb-4">Gracias por participar del blog.</p>
-
-                            {% else %}
-                            <h1 class="display-5 fw-bolder text-white mb-2">Conoce todo sobre las finanzas</h1>
-                            <p class="lead text-white-50 mb-4">Conoce todo lo que necesitas saber sobre las finanzas e independencia financiera. Tipos de inversiones, estilos, calculadora y mas.</p>
-                            {% endif %}
-                            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
                                 {% if request.user.is_authenticated %}
-                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{% url 'crear_post' %}">Crear post</a>
-                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{% url 'perfil' %}">Perfil</a>
-                                {% else %}
-                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{% url 'login' %}">Login</a>
-                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{% url 'registrar' %}">Registrarse</a>
+                                <h1 class="display-5 fw-bolder text-white mb-2">Bienvenido, {{request.user.first_name}}</h1>
+                                <p class="lead text-white-50 mb-4">Gracias por participar del blog.</p>
 
+                                {% else %}
+                                <h1 class="display-5 fw-bolder text-white mb-2">Conoce todo sobre las finanzas</h1>
+                                <p class="lead text-white-50 mb-4">Conoce todo lo que necesitas saber sobre las finanzas e independencia financiera. Tipos de inversiones, estilos, calculadora y mas.</p>
                                 {% endif %}
-                            </div>
+                                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                                    {% if request.user.is_authenticated %}
+                                    <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{% url 'crear_post' %}">Crear post</a>
+                                    <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{% url 'perfil' %}">Perfil</a>
+                                    {% else %}
+                                    <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{% url 'login' %}">Login</a>
+                                    <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{% url 'registrar' %}">Registrarse</a>
+
+                                    {% endif %}
+                                </div>
                             {% endblock headerIndex %}
                         </div>
                     </div>

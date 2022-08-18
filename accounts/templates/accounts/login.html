@@ -1,5 +1,6 @@
 {% extends 'index/index.html' %}
 
+{% load crispy_forms_tags %}
 
 {% block headerIndex %}
 
@@ -13,17 +14,20 @@
         {{msj}}
     {% endif %}
     
-    <div class="form-control">
-        <form  action="" method="POST">
-            {% csrf_token %}
-            
-            <table>
-                {{form.as_table}}
-            </table>
-            
-            <button class="btn btn-primary">Loguearse</button>
-        </form>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group mt-4 mb-4">
+                        {{ form|crispy }}
+                        <div class="col mt-2 mb-2">
+                            <button class="btn btn-primary">Login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-
 
 {% endblock bodyIndex %}

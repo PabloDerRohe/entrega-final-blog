@@ -14,17 +14,13 @@
         {{msj}}
     {% endif %}
 
-    <div class="container">
+    <div class="container mt-4 mb-4">
         <div class="row justify-content-center">
-            <div class="col-8">
+            <div class="col-4">
                 <form action={% url 'registrar' %} method="POST">
                     {% csrf_token %}
-                    <div class="form-group mt-4 mb-4">
                         {{ form|crispy }}
-                        <div class="col mt-2 mb-2">
-                            <button class="btn btn-success">Registrarse</button>
-                        </div>
-                    </div>
+                        <button class="btn btn-success mt-2 mb-2">Registrarse</button>
                 </form>
             </div>
         </div>

@@ -1,5 +1,6 @@
 {% extends 'index/index.html' %}
 
+{% load crispy_forms_tags %}
 
 {% block headerIndex %}
 
@@ -13,14 +14,19 @@
         {{msj}}
     {% endif %}
 
-    <form action={% url 'editar_user' %} method="post" enctype='multipart/form-data'>
-        {% csrf_token %}
+    <div class="container mt-2 mb-2">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <form action={% url 'editar_user' %} method="post" enctype='multipart/form-data'>
+                    {% csrf_token %}
+            
+                    {{ form|crispy }}
 
-        <table>
-            {{form.as_table}}
-        </table>
+                    <button class="btn btn-success mt-2 mb-2">Guardar</button>
 
-        <button>Guardar</button>
-    </form>
+                </form>
+            </div>
+        </div>
+    </div>
 
 {% endblock bodyIndex %}

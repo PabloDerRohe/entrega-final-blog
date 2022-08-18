@@ -20,22 +20,39 @@
 
 
 {% block bodyIndex %}
-<div class="container p-5">
 
-    <form action="" method="get">
-        <div class="mb-3">
-            <label for="searchbar" class="form-label">Ingrese nombre del titulo:</label>
-            <input class="form-control" type="text" name="q" value="{{ request.GET.q }}">
+<div class="container p-5">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <form action="" method="get">
+                <div class="mb-3">
+                    <label for="searchbar" class="form-label">Ingrese nombre del titulo:</label>
+                    <input class="form-control" type="text" name="q" value="{{ request.GET.q }}">
+                </div>
+                <div class="mb-3">
+                    <input class="btn btn-primary" type="submit" value="Buscar post">
+                </div>    
+            </form>
+        </div>        
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-6">
+            {% if object_list %}
+            {% for post in object_list %}
+            <div class="container mt-4 mb-4">
+                Publicacion: <strong>{{post.titulo}}</strong> <a href={% url 'leer_post' post.pk %}>Ver publicacion</a></p>
+            </div>
+            
+            {% endfor %}
+            {% else %}
+        
+            <div class="container mt-4 mb-4">
+                <div class="h4">No se encontro ningún resultado, intentelo nuevamente</div>
+            </div>
+        
+            {% endif %}
         </div>
-        <div class="mb-3">
-            <input class="btn btn-primary" type="submit" value="Buscar post">
-        </div>    
-    </form>
-    {% for post in object_list %}
-    
-        Publicacion: <strong>{{post.titulo}}</strong> <a href={% url 'leer_post' post.pk %}>Ver publicacion</a></p>
-    
-    {% endfor %}
+    </div>
 </div>
     
 

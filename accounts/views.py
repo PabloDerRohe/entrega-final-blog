@@ -52,8 +52,7 @@ def registrar(request):
 
 @login_required
 def perfil(request):
-    
-    
+     
     
     return render(request, 'accounts/perfil.html', {})
 
