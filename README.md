@@ -1,5 +1,7 @@
 ### Project built for Coderhouse Pyhon and Django fullstack course
 
+### Python | Django | HTML | CSS | Bootstrap
+
 ### Entrega 1 - Marelli
 
 # Blog de finanzas
