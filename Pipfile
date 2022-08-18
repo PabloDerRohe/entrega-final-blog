@@ -12,6 +12,7 @@ python-dotenv = "*"
 pillow = "*"
 django-ckeditor = "*"
 matplotlib = "*"
+django-crispy-forms = "*"
 
 [dev-packages]
 
